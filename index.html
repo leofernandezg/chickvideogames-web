@@ -87,11 +87,12 @@
   #lightbox img{max-width:min(94vw,560px); max-height:92vh; border-radius:20px; box-shadow:0 24px 70px rgba(0,0,0,.65)}
   #lightbox .x{position:absolute; top:20px; right:24px; color:#fff; font-size:30px; line-height:1; opacity:.8}
   @keyframes lbfade{from{opacity:0}to{opacity:1}}
-  .stores{display:flex; flex-wrap:wrap; gap:12px; margin-top:26px}
-  .store{display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:13px;
-    border:1px solid var(--panel-brd); background:var(--chip); color:var(--ink); font-weight:600; font-size:.92rem}
-  .store small{display:block; font-weight:500; font-size:.7rem; color:var(--muted)}
-  .store .soon{font-size:.68rem; font-weight:700; color:var(--a1); border:1px solid var(--a1); border-radius:999px; padding:2px 8px; margin-left:2px}
+  .stores{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:26px}
+  .soon-label{font-size:.7rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--a1); border:1px solid var(--a1); border-radius:999px; padding:5px 12px}
+  .badges{display:flex; align-items:center; gap:12px}
+  .badge{display:block; width:auto}
+  .badge-apple{height:46px}
+  .badge-google{height:55px}
 
   .note{margin-top:20px; color:var(--muted); font-size:.95rem}
   .note a{color:var(--a1); font-weight:600}
@@ -173,8 +174,11 @@
         </div>
 
         <div class="stores">
-          <span class="store"><span>🍎</span><span><small>Download on the</small>App Store</span><span class="soon">Soon</span></span>
-          <span class="store"><span>▶</span><span><small>Get it on</small>Google Play</span><span class="soon">Soon</span></span>
+          <span class="soon-label">Coming soon</span>
+          <span class="badges">
+            <img class="badge badge-apple" src="assets/badge-appstore.svg" alt="Download on the App Store">
+            <img class="badge badge-google" src="assets/badge-googleplay.png" alt="Get it on Google Play">
+          </span>
         </div>
       </article>
 
