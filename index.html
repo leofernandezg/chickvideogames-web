@@ -3,12 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#0b0c12">
+<link rel="canonical" href="https://chickvideogames.com/">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <title>Chick Video Games — Independent game studio</title>
 <meta name="description" content="Chick Video Games is an independent studio designing and building original games for iOS and Android.">
 <meta property="og:title" content="Chick Video Games">
 <meta property="og:description" content="Independent game studio. We design and build original games for iOS and Android.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chickvideogames.com">
+<meta property="og:site_name" content="Chick Video Games">
+<meta property="og:image" content="https://chickvideogames.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chick Video Games">
+<meta name="twitter:description" content="Independent game studio. We design and build original games for iOS and Android.">
+<meta name="twitter:image" content="https://chickvideogames.com/assets/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Chick Video Games",
+  "url": "https://chickvideogames.com",
+  "logo": "https://chickvideogames.com/assets/icon-512.png",
+  "image": "https://chickvideogames.com/assets/og-image.png",
+  "description": "Independent game studio designing and building original games for iOS and Android.",
+  "email": "contact@chickvideogames.com",
+  "foundingLocation": "Argentina"
+}
+</script>
 <style>
   /* Dark-only studio site (no light mode yet — see brand note). */
   :root{
@@ -168,9 +196,9 @@
           and calm to play, with a handmade look, dozens of levels and an endless mode. Our first release.</p>
 
         <div class="shots">
-          <div class="phone"><img src="assets/shot-1.jpg" alt="Cozy Block Garden gameplay"></div>
-          <div class="phone"><img src="assets/shot-2.jpg" alt="Cozy Block Garden garden"></div>
-          <div class="phone"><img src="assets/shot-3.jpg" alt="Cozy Block Garden levels"></div>
+          <div class="phone"><img src="assets/shot-1.jpg" width="595" height="1290" loading="lazy" alt="Cozy Block Garden gameplay"></div>
+          <div class="phone"><img src="assets/shot-2.jpg" width="595" height="1290" loading="lazy" alt="Cozy Block Garden garden"></div>
+          <div class="phone"><img src="assets/shot-3.jpg" width="595" height="1290" loading="lazy" alt="Cozy Block Garden levels"></div>
         </div>
 
         <div class="stores">
@@ -215,18 +243,7 @@
 
   <div id="lightbox" aria-hidden="true"><span class="x">&times;</span><img alt="Cozy Block Garden screenshot"></div>
 
-  <script>
-    (function(){
-      var lb=document.getElementById('lightbox'), lbimg=lb.querySelector('img');
-      function open(src){ lbimg.src=src; lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); }
-      function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); }
-      document.querySelectorAll('.shots img').forEach(function(img){
-        img.addEventListener('click', function(){ open(img.currentSrc || img.src); });
-      });
-      lb.addEventListener('click', close);
-      document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
-    })();
-  </script>
+  <script src="assets/app.js" defer></script>
 
 </body>
 </html>

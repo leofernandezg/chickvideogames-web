@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chickvideogames.com/sitemap.xml
