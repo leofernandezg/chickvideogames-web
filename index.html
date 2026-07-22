@@ -12,21 +12,21 @@
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=3">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3">
 <title>Chick Video Games</title>
-<meta name="description" content="Chick Video Games is an independent studio designing and building original games for iOS and Android.">
+<meta name="description" content="Chick Video Games designs and builds original games for iOS and Android.">
 <meta property="og:title" content="Chick Video Games">
-<meta property="og:description" content="Independent game studio. We design and build original games for iOS and Android.">
+<meta property="og:description" content="We design and build original games for iOS and Android.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chickvideogames.com">
 <meta property="og:site_name" content="Chick Video Games">
 <meta property="og:image" content="https://chickvideogames.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Chick Video Games — independent game studio">
+<meta property="og:image:alt" content="Chick Video Games, game studio">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Chick Video Games">
-<meta name="twitter:description" content="Independent game studio. We design and build original games for iOS and Android.">
+<meta name="twitter:description" content="We design and build original games for iOS and Android.">
 <meta name="twitter:image" content="https://chickvideogames.com/assets/og-image.png">
-<meta name="twitter:image:alt" content="Chick Video Games — independent game studio">
+<meta name="twitter:image:alt" content="Chick Video Games, game studio">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -35,7 +35,7 @@
   "url": "https://chickvideogames.com",
   "logo": "https://chickvideogames.com/assets/icon-512.png",
   "image": "https://chickvideogames.com/assets/og-image.png",
-  "description": "Independent game studio designing and building original games for iOS and Android.",
+  "description": "Game studio designing and building original games for iOS and Android.",
   "email": "contact@chickvideogames.com",
   "foundingLocation": "Argentina"
 }
@@ -123,7 +123,10 @@
   .phone img:focus-visible{outline:2px solid var(--a1); outline-offset:3px}
   @keyframes lbfade{from{opacity:0}to{opacity:1}}
   .stores{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:26px}
-  .soon-label{font-size:.7rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--a1); border:1px solid var(--a1); border-radius:999px; padding:5px 12px}
+  .platforms{margin-top:14px; color:var(--muted); font-size:.95rem}
+  .badges a{display:inline-flex; align-items:center; border-radius:10px; transition:transform .2s ease}
+  .badges a:hover{transform:translateY(-2px)}
+  .badges a:focus-visible{outline:2px solid var(--a1); outline-offset:3px}
   .badges{display:flex; align-items:center; gap:12px}
   .badge{display:block; width:auto}
   .badge-apple{height:46px}
@@ -176,7 +179,7 @@
     <div class="hero-inner wrap">
       <img class="mark" src="assets/chick-light.png" alt="Chick Video Games logo">
       <h1>Chick <span class="grad">Video Games</span></h1>
-      <p class="lede">Independent game studio. We design and build original games for iOS and Android — from first sketch to release.</p>
+      <p class="lede">We design and build original games for iOS and Android, from first sketch to release.</p>
       <div class="cta">
         <a class="btn primary" href="#games">See our games</a>
         <a class="btn ghost" href="#contact">Get in touch</a>
@@ -196,11 +199,11 @@
           <img class="ico" src="assets/icon.png" alt="Cozy Block Garden icon">
           <div>
             <h3>Cozy Block Garden</h3>
-            <div class="meta">Block puzzle · iOS &amp; Android · Free</div>
+            <div class="meta">Block puzzle · Free · iPhone, iPad &amp; Android</div>
           </div>
         </div>
         <p class="desc">A block puzzle where clearing lines grows a garden of your own. Easy to pick up
-          and calm to play, with a handmade look, dozens of levels and an endless mode. Our first release.</p>
+          and calm to play, with a handmade look, dozens of levels and an endless mode. Our first release, out now.</p>
 
         <div class="shots">
           <div class="phone"><img src="assets/shot-1.jpg" width="595" height="1290" loading="lazy" tabindex="0" role="button" alt="Cozy Block Garden gameplay — enlarge"></div>
@@ -209,12 +212,16 @@
         </div>
 
         <div class="stores">
-          <span class="soon-label">Coming soon</span>
           <span class="badges">
-            <img class="badge badge-apple" src="assets/badge-appstore.svg" alt="Download on the App Store">
-            <img class="badge badge-google" src="assets/badge-googleplay.png" alt="Get it on Google Play">
+            <a href="https://apps.apple.com/us/app/cozy-block-garden-puzzle/id6789437905" target="_blank" rel="noopener" aria-label="Download Cozy Block Garden on the App Store">
+              <img class="badge badge-apple" src="assets/badge-appstore.svg" alt="Download on the App Store">
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.chickstudios.cozyblockgarden" target="_blank" rel="noopener" aria-label="Get Cozy Block Garden on Google Play">
+              <img class="badge badge-google" src="assets/badge-googleplay.png" alt="Get it on Google Play">
+            </a>
           </span>
         </div>
+        <p class="platforms">Free on iPhone, iPad, Android phones and Android tablets.</p>
       </article>
 
       <p class="note">More games are in development. <a href="#contact">Reach out</a> to hear when the next one ships.</p>
@@ -223,10 +230,10 @@
     <section class="block studio" id="studio">
       <span class="kicker">Studio</span>
       <h2>About the studio</h2>
-      <p>Chick Video Games is an independent studio based in Argentina. We build our games in-house —
-        design, art and code — and self-publish them on the App Store and Google Play. We're not tied to a
-        single genre: Cozy Block Garden is our debut, and we're already working on what comes next.</p>
-      <div class="facts"><span>Independent</span><span>Self-published</span><span>iOS &amp; Android</span><span>Made in Argentina</span></div>
+      <p>Chick Video Games is a game studio based in Argentina. We build our games in-house (design, art
+        and code) and bring them to the App Store and Google Play. We're not tied to a single genre:
+        Cozy Block Garden is our debut, and we're already working on what comes next.</p>
+      <div class="facts"><span>Original games</span><span>iOS &amp; Android</span><span>Made in Argentina</span></div>
     </section>
 
     <section class="block" id="contact">
