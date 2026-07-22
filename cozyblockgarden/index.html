@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#0b0c12">
+<link rel="canonical" href="https://chickvideogames.com/cozyblockgarden">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=3">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png?v=3">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png?v=3">
+<title>Cozy Block Garden: Puzzle - Free on iOS &amp; Android</title>
+<meta name="description" content="Download Cozy Block Garden, a cozy block puzzle where clearing lines grows your own garden. Free on iPhone, iPad and Android. No timers, just calm.">
+<meta property="og:title" content="Cozy Block Garden: Puzzle">
+<meta property="og:description" content="A cozy block puzzle. Clear lines, grow your garden. Free on iOS and Android.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chickvideogames.com/cozyblockgarden">
+<meta property="og:site_name" content="Chick Video Games">
+<meta property="og:image" content="https://chickvideogames.com/assets/cozyblockgarden-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cozy Block Garden - a cozy block puzzle">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cozy Block Garden: Puzzle">
+<meta name="twitter:description" content="A cozy block puzzle. Clear lines, grow your garden. Free on iOS and Android.">
+<meta name="twitter:image" content="https://chickvideogames.com/assets/cozyblockgarden-share.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Cozy Block Garden: Puzzle",
+  "operatingSystem": "iOS, iPadOS, Android",
+  "applicationCategory": "GameApplication",
+  "applicationSubCategory": "Puzzle",
+  "description": "A cozy block puzzle where clearing lines grows your own garden. No timers, just calm. Free on iOS and Android.",
+  "url": "https://chickvideogames.com/cozyblockgarden",
+  "image": "https://chickvideogames.com/assets/cozyblockgarden-share.png",
+  "author": { "@type": "Organization", "name": "Chick Video Games", "url": "https://chickvideogames.com" },
+  "publisher": { "@type": "Organization", "name": "Chick Video Games" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "downloadUrl": [
+    "https://apps.apple.com/us/app/cozy-block-garden-puzzle/id6789437905",
+    "https://play.google.com/store/apps/details?id=com.chickstudios.cozyblockgarden"
+  ]
+}
+</script>
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0b0c12; --panel:rgba(255,255,255,.045); --panel-brd:rgba(255,255,255,.09);
+    --ink:#f4f3f9; --muted:#a6a3b8; --a1:#8b5cff; --a2:#ff6ec7; --a3:#39d6e0;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; display:flex; align-items:center; justify-content:center;
+    padding:28px; overflow:hidden; position:relative;
+  }
+  .glow{position:absolute; inset:-30% -10% auto -10%; height:120%; z-index:0; filter:blur(72px); opacity:.45; pointer-events:none}
+  .glow::before,.glow::after{content:""; position:absolute; border-radius:50%}
+  .glow::before{width:460px; height:460px; left:6%; top:-12%; background:radial-gradient(circle at 30% 30%, var(--a1), transparent 62%)}
+  .glow::after{width:400px; height:400px; right:4%; top:2%; background:radial-gradient(circle at 60% 40%, var(--a2), transparent 60%)}
+  .card{
+    position:relative; z-index:1; width:100%; max-width:440px; text-align:center;
+    background:var(--panel); border:1px solid var(--panel-brd); border-radius:24px;
+    padding:38px 30px 32px; box-shadow:0 20px 50px rgba(0,0,0,.28);
+  }
+  .ico{width:96px; height:96px; border-radius:22px; box-shadow:0 8px 22px rgba(0,0,0,.3); margin:0 auto 18px; display:block}
+  h1{font-size:1.6rem; margin:0; font-weight:800; letter-spacing:-.01em}
+  .sub{color:var(--a3); margin:8px 0 0; font-size:.92rem; font-weight:600}
+  .desc{color:var(--muted); margin:14px auto 0; font-size:1rem; line-height:1.55; max-width:36ch}
+  .msg{margin:22px auto 2px; color:var(--ink); font-size:1rem; line-height:1.5; max-width:34ch}
+  .badges{display:flex; flex-direction:row; flex-wrap:wrap; align-items:center; justify-content:center; gap:14px; margin-top:16px}
+  .badges a{display:inline-flex; border-radius:10px; transition:transform .2s ease}
+  .badges a:hover{transform:translateY(-2px)}
+  .badges a:focus-visible{outline:2px solid var(--a1); outline-offset:3px}
+  .badge-apple{height:46px; width:auto; display:block}
+  .badge-google{height:55px; width:auto; display:block}
+  .foot{margin-top:24px; color:var(--muted); font-size:.85rem}
+  .foot a{color:var(--a1); font-weight:600; text-decoration:none}
+  .foot a:hover{text-decoration:underline}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <main class="card">
+    <img class="ico" src="../assets/icon.png" alt="Cozy Block Garden app icon">
+    <h1>Cozy Block Garden</h1>
+    <p class="sub">A cozy block puzzle for iPhone, iPad &amp; Android</p>
+    <p class="desc">Clear lines to earn flower petals and grow your own cozy garden. No timers, no pressure, just a calm puzzle you play at your own pace.</p>
+    <p class="msg">If you weren't redirected automatically, tap your store below to download the game. It's free on iOS and Android.</p>
+    <div class="badges">
+      <a href="https://apps.apple.com/us/app/cozy-block-garden-puzzle/id6789437905" aria-label="Download Cozy Block Garden on the App Store">
+        <img class="badge-apple" src="../assets/badge-appstore.svg" alt="Download on the App Store">
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.chickstudios.cozyblockgarden" aria-label="Get Cozy Block Garden on Google Play">
+        <img class="badge-google" src="../assets/badge-googleplay.png" alt="Get it on Google Play">
+      </a>
+    </div>
+    <p class="foot"><a href="/">chickvideogames.com</a></p>
+  </main>
+  <script src="redirect.js"></script>
+</body>
+</html>
