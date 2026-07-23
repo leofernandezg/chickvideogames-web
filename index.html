@@ -98,7 +98,7 @@
   .section-sub{color:var(--muted); margin-top:10px; max-width:660px}
 
   /* ---------- GAME CARD ---------- */
-  .game{margin-top:30px; background:var(--panel); border:1px solid var(--panel-brd); border-radius:22px;
+  .game{position:relative; margin-top:30px; background:var(--panel); border:1px solid var(--panel-brd); border-radius:22px;
     padding:28px; box-shadow:0 18px 44px rgba(0,0,0,.16)}
   .game-head{display:flex; align-items:center; gap:16px}
   .game-head img.ico{width:70px; height:70px; border-radius:17px; box-shadow:0 6px 16px rgba(0,0,0,.26)}
@@ -131,6 +131,17 @@
   .badge{display:block; width:auto}
   .badge-apple{height:46px}
   .badge-google{height:55px}
+  .share-btn{position:absolute; top:20px; right:20px; z-index:2; display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:12px;
+    border:1px solid var(--panel-brd); background:var(--chip); color:var(--ink); font:inherit;
+    font-size:.92rem; font-weight:600; cursor:pointer; transition:transform .2s ease, border-color .2s ease}
+  .share-btn:hover{transform:translateY(-2px); border-color:var(--a1)}
+  .share-btn:focus-visible{outline:2px solid var(--a1); outline-offset:3px}
+  .share-btn svg{width:17px; height:17px}
+  .toast{position:fixed; left:50%; bottom:30px; transform:translateX(-50%) translateY(18px);
+    background:var(--ink); color:#0b0c12; padding:11px 18px; border-radius:12px; font-size:.9rem; font-weight:700;
+    opacity:0; pointer-events:none; transition:opacity .25s ease, transform .25s ease; z-index:200;
+    box-shadow:0 14px 34px rgba(0,0,0,.5)}
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
 
   .note{margin-top:20px; color:var(--muted); font-size:.95rem}
   .note a{color:var(--a1); font-weight:600}
@@ -156,7 +167,7 @@
   @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(26px,20px)}}
   @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-24px,16px)}}
   @media (prefers-reduced-motion:reduce){*{animation:none!important}}
-  @media (max-width:640px){ .shots{gap:9px} .game{padding:22px} }
+  @media (max-width:640px){ .shots{gap:9px} .game{padding:22px} .share-btn{top:16px; right:16px; padding:9px} .share-btn span{display:none} .game-head{padding-right:44px} }
 </style>
 </head>
 <body>
@@ -195,6 +206,10 @@
       <p class="section-sub">Original titles, designed and built in-house.</p>
 
       <article class="game">
+        <button class="share-btn" type="button" id="shareBtn" data-url="https://chickvideogames.com/cozyblockgarden" aria-label="Share Cozy Block Garden">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          <span>Share</span>
+        </button>
         <div class="game-head">
           <img class="ico" src="assets/icon.png" alt="Cozy Block Garden icon">
           <div>
@@ -222,6 +237,7 @@
           </span>
         </div>
         <p class="platforms">Free on iPhone, iPad, Android phones and Android tablets.</p>
+        <div class="toast" id="shareToast" role="status" aria-live="polite"></div>
       </article>
 
       <p class="note">More games are in development. <a href="#contact">Reach out</a> to hear when the next one ships.</p>
@@ -258,6 +274,7 @@
   <div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot viewer" aria-hidden="true" tabindex="-1"><button class="x" type="button" aria-label="Close">&times;</button><img alt="Cozy Block Garden screenshot, enlarged"></div>
 
   <script src="assets/app.js" defer></script>
+  <script src="assets/share.js" defer></script>
 
 </body>
 </html>
