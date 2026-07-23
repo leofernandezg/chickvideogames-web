@@ -20,10 +20,63 @@
   var APPLE_PT = "129150744";
   var APPLE_CAMPAIGN = "https://apps.apple.com/app/apple-store/id6789437905";
 
-  // Campaign source, from ?s= on this page. Allowlist-shaped: short, lowercase, safe chars.
-  function source() {
+  // Explicit source, from ?s= on this page. Allowlist-shaped: short, lowercase, safe chars.
+  function explicitSource() {
     var m = /[?&]s=([A-Za-z0-9_-]{1,24})(?:&|$)/.exec(window.location.search || "");
     return m ? m[1].toLowerCase() : "";
+  }
+
+  // Fallback when there is no ?s=: infer the source from the referring HOST, so links
+  // published before tagging existed (and anything re-shared) still get attributed.
+  //
+  // Why hostname-only is the right unit (MDN, Referrer-Policy): the browser default is
+  // "strict-origin-when-cross-origin", which sends only the ORIGIN on a cross-origin
+  // navigation - never the path. So the host is all we can ever rely on.
+  // document.referrer is "" for direct navigation (bookmark, typed URL) and for sites
+  // that set Referrer-Policy: no-referrer -> those simply stay untagged.
+  //
+  // Partial by design: in-app browsers (Instagram, TikTok, WhatsApp) frequently send NO
+  // referrer at all - that is exactly why explicit ?s= tagging is the primary mechanism.
+  // Inferred hits land in the SAME bucket as explicit ones on purpose: splitting them
+  // would fragment low volumes below Apple's 5-install reporting threshold.
+  var REFERRER_MAP = [
+    ["instagram.com", "ig"],
+    ["tiktok.com",    "tt"],
+    ["youtube.com",   "yt"],
+    ["youtu.be",      "yt"],
+    ["reddit.com",    "reddit"],
+    ["x.com",         "x"],
+    ["twitter.com",   "x"],
+    ["t.co",          "x"],
+    ["facebook.com",  "fb"],
+    ["linkedin.com",  "li"],
+    ["lnkd.in",       "li"],
+    ["bing.com",      "bing"],
+    ["duckduckgo.com","ddg"]
+  ];
+  // google.com and every ccTLD variant (google.com.ar, google.es, ...).
+  var GOOGLE_HOST = /(^|\.)google(\.[a-z]{2,3}){1,2}$/;
+
+  // Exact host or a real subdomain of it - NOT a substring match, so a host like
+  // "instagram.com.example.net" can't be mistaken for Instagram.
+  function hostIs(host, domain) {
+    return host === domain || host.slice(-(domain.length + 1)) === "." + domain;
+  }
+
+  function referrerSource() {
+    var ref = document.referrer || "";
+    if (!ref) return "";
+    var host = "";
+    try { host = new URL(ref).hostname.toLowerCase(); } catch (e) { return ""; }
+    for (var i = 0; i < REFERRER_MAP.length; i++) {
+      if (hostIs(host, REFERRER_MAP[i][0])) return REFERRER_MAP[i][1];
+    }
+    if (GOOGLE_HOST.test(host)) return "google";
+    return "";
+  }
+
+  function source() {
+    return explicitSource() || referrerSource();
   }
 
   function tagApple(url, s) {
