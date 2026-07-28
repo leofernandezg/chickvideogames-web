@@ -106,21 +106,45 @@
   .game-head .meta{color:var(--muted); font-size:.92rem; margin-top:3px}
   .game p.desc{color:var(--muted); margin:16px 0 0; max-width:72ch}
   .shots{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px}
-  .phone{border-radius:20px; border:1px solid var(--panel-brd); background:#000; padding:6px;
+  .phone{display:block; width:100%; font:inherit; color:inherit; -webkit-appearance:none; appearance:none;
+    border-radius:20px; border:1px solid var(--panel-brd); background:#000; padding:6px;
     box-shadow:0 12px 28px rgba(0,0,0,.26); transition:transform .25s ease; cursor:zoom-in}
   .phone:hover{transform:translateY(-6px)}
   .phone img{width:100%; height:auto; display:block; border-radius:14px}
+  .phone:focus-visible{outline:2px solid var(--a1); outline-offset:3px}
 
-  /* lightbox */
+  /* lightbox — see codebase/WEB-STANDARDS.md §4 (gallery convention) */
   #lightbox{position:fixed; inset:0; z-index:100; display:none; align-items:center; justify-content:center;
     padding:24px; background:rgba(6,7,11,.9); backdrop-filter:blur(8px); cursor:zoom-out}
   #lightbox.open{display:flex; animation:lbfade .18s ease}
-  #lightbox img{max-width:min(94vw,560px); max-height:92vh; border-radius:20px; box-shadow:0 24px 70px rgba(0,0,0,.65)}
+  .lb-stage{position:relative; display:flex; align-items:center; justify-content:center}
+  #lightbox .lb-img{display:block; max-width:min(94vw,560px); max-height:92vh; border-radius:20px;
+    box-shadow:0 24px 70px rgba(0,0,0,.65)}
   #lightbox .x{position:absolute; top:16px; right:20px; color:#fff; font-size:34px; line-height:1; opacity:.85;
     background:none; border:0; cursor:pointer; padding:6px}
   #lightbox .x:hover{opacity:1}
   #lightbox .x:focus-visible{outline:2px solid #fff; outline-offset:2px; border-radius:6px}
-  .phone img:focus-visible{outline:2px solid var(--a1); outline-offset:3px}
+  /* prev / next: 48px targets, greyed (aria-disabled, still focusable) at the first/last shot */
+  #lightbox .lb-nav{position:absolute; top:50%; transform:translateY(-50%); width:48px; height:48px; padding:0;
+    display:flex; align-items:center; justify-content:center; color:#fff; cursor:pointer;
+    border:1px solid rgba(255,255,255,.18); border-radius:50%; background:rgba(10,11,16,.62);
+    transition:background .2s ease, opacity .2s ease}
+  #lightbox .lb-nav[hidden]{display:none}     /* single-shot gallery: no arrows at all */
+  #lightbox .lb-nav svg{width:26px; height:26px}
+  #lightbox .lb-nav:hover{background:rgba(10,11,16,.92)}
+  #lightbox .lb-nav:focus-visible{outline:2px solid #fff; outline-offset:3px}
+  #lightbox .lb-nav[aria-disabled="true"],
+  #lightbox .lb-nav[aria-disabled="true"]:hover{opacity:.3; cursor:default; background:rgba(10,11,16,.45)}
+  #lightbox .lb-nav.prev{right:100%; margin-right:16px}
+  #lightbox .lb-nav.next{left:100%; margin-left:16px}
+  .lb-count{position:absolute; bottom:16px; left:50%; transform:translateX(-50%); margin:0;
+    padding:5px 13px; border-radius:999px; background:rgba(10,11,16,.72); border:1px solid rgba(255,255,255,.1);
+    color:var(--ink); font-size:.82rem; font-weight:700; letter-spacing:.03em}
+  body.lb-open{overflow:hidden}
+  @media (max-width:760px){
+    #lightbox .lb-nav.prev{right:auto; left:8px; margin:0}
+    #lightbox .lb-nav.next{left:auto; right:8px; margin:0}
+  }
   @keyframes lbfade{from{opacity:0}to{opacity:1}}
   .stores{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:26px}
   .platforms{margin-top:14px; color:var(--muted); font-size:.95rem}
@@ -221,9 +245,9 @@
           and calm to play, with a handmade look, dozens of levels and an endless mode. Our first release, out now.</p>
 
         <div class="shots">
-          <div class="phone"><img src="assets/shot-1.jpg" width="595" height="1290" loading="lazy" tabindex="0" role="button" alt="Cozy Block Garden gameplay — enlarge"></div>
-          <div class="phone"><img src="assets/shot-2.jpg" width="595" height="1290" loading="lazy" tabindex="0" role="button" alt="Cozy Block Garden garden — enlarge"></div>
-          <div class="phone"><img src="assets/shot-3.jpg" width="595" height="1290" loading="lazy" tabindex="0" role="button" alt="Cozy Block Garden levels — enlarge"></div>
+          <button class="phone" type="button"><img src="assets/shot-1.jpg" width="595" height="1290" loading="lazy" alt="Cozy Block Garden gameplay"></button>
+          <button class="phone" type="button"><img src="assets/shot-2.jpg" width="595" height="1290" loading="lazy" alt="Cozy Block Garden garden"></button>
+          <button class="phone" type="button"><img src="assets/shot-3.jpg" width="595" height="1290" loading="lazy" alt="Cozy Block Garden levels"></button>
         </div>
 
         <div class="stores">
@@ -273,7 +297,19 @@
     </div>
   </footer>
 
-  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot viewer" aria-hidden="true" tabindex="-1"><button class="x" type="button" aria-label="Close">&times;</button><img alt="Cozy Block Garden screenshot, enlarged"></div>
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot viewer" aria-hidden="true" tabindex="-1">
+    <button class="x" type="button" aria-label="Close">&times;</button>
+    <div class="lb-stage">
+      <img class="lb-img" alt="">
+      <button class="lb-nav prev" type="button" aria-label="Previous screenshot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="lb-nav next" type="button" aria-label="Next screenshot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    <p class="lb-count" role="status"></p>
+  </div>
 
   <script src="assets/app.js" defer></script>
   <script src="assets/share.js" defer></script>
